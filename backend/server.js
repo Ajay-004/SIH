@@ -13,9 +13,9 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // --- MIDDLEWARE ---
 
-// *** THIS IS THE LINE YOU ARE ADDING/CHANGING ***
-// It tells your server to ONLY accept requests from your frontend URL.
-app.use(cors({ origin: "https://end-5hf1.onrender.com" })); 
+// *** THIS IS THE CORRECTED LINE ***
+// It now allows requests from your new frontend URL.
+app.use(cors({ origin: "https://tech-crafters.onrender.com" })); 
 
 app.use(express.json()); // Parse JSON request bodies
 
@@ -28,3 +28,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
