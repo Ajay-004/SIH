@@ -1,0 +1,19 @@
+# This file tells Netlify how to build and deploy your site.
+
+[build]
+  # This is the command to install backend dependencies.
+  # We change directory into the backend, run npm install, then go back.
+  command = "cd backend && npm install && cd .."
+  
+  # The folder with your frontend HTML/CSS files.
+  publish = "frontend"
+
+[functions]
+  # The directory where Netlify will find your serverless function.
+  directory = "backend"
+
+# This rule directs all API traffic to your backend function.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat" # The function is named after the file: server.js
+  status = 200
