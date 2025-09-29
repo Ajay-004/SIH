@@ -1,0 +1,24 @@
+# This file provides the build and deployment settings for Netlify.
+
+[build]
+  # This command tells Netlify to navigate into your backend folder,
+  # install its dependencies, and then navigate back to the root.
+  command = "cd backend && npm install && cd .."
+  
+  # This specifies that your static frontend files (HTML, CSS, JS)
+  # are located in the "frontend" directory.
+  publish = "frontend"
+
+[functions]
+  # This tells Netlify that your serverless function code (your backend)
+  # is located in the "backend" directory.
+  directory = "backend"
+
+# This section is crucial for making your backend API work.
+# It tells Netlify to redirect any request that starts with "/api/"
+# to your running backend serverless function.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
